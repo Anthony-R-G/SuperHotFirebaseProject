@@ -85,13 +85,13 @@ extension loginViewController {
         configureLoginButtonConstraints()
     }
     
+    
     private func configureLoginButtonConstraints() {
         NSLayoutConstraint.activate([
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -170),
             loginButton.widthAnchor.constraint(equalToConstant: 350),
             loginButton.heightAnchor.constraint(equalToConstant: 60)
-            
         ])
     }
     
@@ -101,7 +101,6 @@ extension loginViewController {
             signUpButton.bottomAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 70),
             signUpButton.widthAnchor.constraint(equalToConstant: 350),
             signUpButton.heightAnchor.constraint(equalToConstant: 60)
-            
         ])
     }
     
