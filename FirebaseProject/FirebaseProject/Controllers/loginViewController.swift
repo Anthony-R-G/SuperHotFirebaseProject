@@ -16,7 +16,6 @@ class loginViewController: UIViewController {
         textField.placeholder = "Enter Email..."
         textField.borderStyle = .roundedRect
         textField.backgroundColor = #colorLiteral(red: 0.9101040959, green: 0.9046940207, blue: 0.9142627716, alpha: 1)
-        textField.isUserInteractionEnabled = true
         textField.delegate = self
         return textField
     }()
@@ -46,6 +45,7 @@ class loginViewController: UIViewController {
         button.setTitle("Don't have an account? Sign up", for: .normal)
         button.setTitleColor(.purple, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        button.addTarget(self, action: #selector(signUpButtonPressed), for: .touchUpInside)
         button.showsTouchWhenHighlighted = true
         return button
     }()
@@ -59,12 +59,27 @@ class loginViewController: UIViewController {
     //MARK: -- Methods
     
     
-    @objc private func loginButtonPressed () {
-    let tabVC = MainTabBarController()
+    @objc private func loginButtonPressed() {
+        let tabVC = MainTabBarController()
         tabVC.modalPresentationStyle = .fullScreen
         present(tabVC, animated: true, completion: nil)
     }
-        
+    
+    @objc private func signUpButtonPressed() {
+        let signUpVC = SignUpViewController()
+        navigationController?.pushViewController(signUpVC, animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true;
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = false;
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setConstraints()
@@ -72,6 +87,7 @@ class loginViewController: UIViewController {
     }
 }
 
+//MARK: -- Constraints
 extension loginViewController {
     
     private func setConstraints() {
@@ -128,6 +144,7 @@ extension loginViewController {
     }
 }
 
+//MARK: --TextField Delegate
 extension loginViewController: UITextFieldDelegate {
     
 }
