@@ -13,6 +13,9 @@
 		976F30922386EB38009C0880 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 976F30912386EB38009C0880 /* Assets.xcassets */; };
 		976F30952386EB38009C0880 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 976F30932386EB38009C0880 /* LaunchScreen.storyboard */; };
 		976F30A12387274C009C0880 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F30A02387274C009C0880 /* SignUpViewController.swift */; };
+		976F30A323872BC4009C0880 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F30A223872BC4009C0880 /* MainTabBarController.swift */; };
+		976F30A523872C0F009C0880 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F30A423872C0F009C0880 /* FeedViewController.swift */; };
+		976F30A723872E4C009C0880 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F30A623872E4C009C0880 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		976F30942386EB38009C0880 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		976F30962386EB39009C0880 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		976F30A02387274C009C0880 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		976F30A223872BC4009C0880 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		976F30A423872C0F009C0880 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		976F30A623872E4C009C0880 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +78,9 @@
 			children = (
 				976F308C2386EB35009C0880 /* loginViewController.swift */,
 				976F30A02387274C009C0880 /* SignUpViewController.swift */,
+				976F30A223872BC4009C0880 /* MainTabBarController.swift */,
+				976F30A423872C0F009C0880 /* FeedViewController.swift */,
+				976F30A623872E4C009C0880 /* ProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -171,7 +180,10 @@
 			files = (
 				976F308D2386EB35009C0880 /* loginViewController.swift in Sources */,
 				976F30892386EB35009C0880 /* AppDelegate.swift in Sources */,
+				976F30A323872BC4009C0880 /* MainTabBarController.swift in Sources */,
 				976F30A12387274C009C0880 /* SignUpViewController.swift in Sources */,
+				976F30A723872E4C009C0880 /* ProfileViewController.swift in Sources */,
+				976F30A523872C0F009C0880 /* FeedViewController.swift in Sources */,
 				976F308B2386EB35009C0880 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

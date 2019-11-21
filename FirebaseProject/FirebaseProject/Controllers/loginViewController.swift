@@ -58,6 +58,13 @@ class loginViewController: UIViewController {
     
     //MARK: -- Methods
     
+    
+    @objc private func loginButtonPressed () {
+    let tabVC = MainTabBarController()
+        tabVC.modalPresentationStyle = .fullScreen
+        present(tabVC, animated: true, completion: nil)
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         setConstraints()
@@ -122,6 +129,6 @@ extension loginViewController {
     }
 }
 
-extension loginViewController: UIViewController {
+extension loginViewController: UITextFieldDelegate {
     
 }
