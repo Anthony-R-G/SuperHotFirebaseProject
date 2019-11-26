@@ -12,7 +12,7 @@ import FirebaseAuth
 class LoginViewController: UIViewController {
     
     //MARK: -- Lazy Properties
-    lazy var emailNameTextField: UITextField = {
+    lazy var emailTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Enter Email..."
         textField.borderStyle = .roundedRect
@@ -37,7 +37,7 @@ class LoginViewController: UIViewController {
         button.backgroundColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
         button.layer.cornerRadius = 10
         button.showsTouchWhenHighlighted = true
-        button.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tryLogin), for: .touchUpInside)
         return button
     }()
     
@@ -65,13 +65,66 @@ class LoginViewController: UIViewController {
         present(alertVC, animated: true, completion: nil)
     }
     
+    private func handleLoginResponse(with result: Result<(), Error>) {
+        switch result {
+        case .failure(let error):
+            showAlert(message: error.localizedDescription)
+        case .success:
+            
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
+                else {
+                    //MARK: TODO - handle could not swap root view controller
+                    return
+            }
+            
+            //MARK: TODO - refactor this logic into scene delegate
+            UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromBottom, animations: {
+//                if FirebaseAuthService.manager.currentUser?.photoURL = nil {
+                    window.rootViewController = MainTabBarController()
+//                } else {
+//                    window.rootViewController = {
+//                        let profileSetupVC = ProfileEditViewController()
+//                        profileSetupVC.settingFromLogin = true
+//                        return profileSetupVC
+//                    }()
+                })
+//            }, completion: nil)
+        }
+    }
+    
+    @objc func tryLogin() {
+           guard let email = emailTextField.text, let password = passwordTextField.text else {
+            showAlert(message: "Please fill out all fields.")
+               return
+           }
+           
+           //MARK: TODO - remove whitespace (if any) from email/password
+           
+           guard email.isValidEmail else {
+            showAlert(message: "Please enter a valid email")
+               return
+           }
+           
+           guard password.isValidPassword else {
+               showAlert(message: "Please enter a valid password. Passwords must have at least 8 characters.")
+               return
+           }
+           
+           FirebaseAuthService.manager.loginUser(email: email.lowercased(), password: password) { (result) in
+               self.handleLoginResponse(with: result)
+           }
+       }
+    
+    
+    
     @objc private func loginButtonPressed() {
         //Validate text fields
-        if emailNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+        if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             self.showAlert(message: "Please fill in all fields")
         } else {
             //Create cleaned versions of email and password textfields.
-            let email = emailNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
             //Signing in the user
@@ -87,6 +140,8 @@ class LoginViewController: UIViewController {
             }
         }
     }
+    
+    
     
     @objc private func signUpButtonPressed() {
         let signUpVC = SignUpViewController()
@@ -114,9 +169,9 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
     
     private func setConstraints() {
-        [emailNameTextField, passwordTextField, loginButton, signUpButton, logoImageView].forEach({view.addSubview($0)})
+        [emailTextField, passwordTextField, loginButton, signUpButton, logoImageView].forEach({view.addSubview($0)})
         
-        [emailNameTextField, passwordTextField, loginButton, signUpButton, logoImageView].forEach({$0.translatesAutoresizingMaskIntoConstraints = false})
+        [emailTextField, passwordTextField, loginButton, signUpButton, logoImageView].forEach({$0.translatesAutoresizingMaskIntoConstraints = false})
         
         configureImageConstraints()
         configureTextFieldConstraints()
@@ -145,13 +200,13 @@ extension LoginViewController {
     
     private func configureTextFieldConstraints() {
         NSLayoutConstraint.activate([
-            emailNameTextField.centerXAnchor.constraint(equalTo: loginButton.centerXAnchor),
-            emailNameTextField.centerYAnchor.constraint(equalTo: loginButton.centerYAnchor, constant: -200),
-            emailNameTextField.widthAnchor.constraint(equalToConstant: 350),
-            emailNameTextField.heightAnchor.constraint(equalToConstant: 40),
+            emailTextField.centerXAnchor.constraint(equalTo: loginButton.centerXAnchor),
+            emailTextField.centerYAnchor.constraint(equalTo: loginButton.centerYAnchor, constant: -200),
+            emailTextField.widthAnchor.constraint(equalToConstant: 350),
+            emailTextField.heightAnchor.constraint(equalToConstant: 40),
             
-            passwordTextField.centerXAnchor.constraint(equalTo: emailNameTextField.centerXAnchor),
-            passwordTextField.centerYAnchor.constraint(equalTo: emailNameTextField.centerYAnchor, constant: 70),
+            passwordTextField.centerXAnchor.constraint(equalTo: emailTextField.centerXAnchor),
+            passwordTextField.centerYAnchor.constraint(equalTo: emailTextField.centerYAnchor, constant: 70),
             passwordTextField.widthAnchor.constraint(equalToConstant: 350),
             passwordTextField.heightAnchor.constraint(equalToConstant: 40)
         ])
@@ -160,7 +215,7 @@ extension LoginViewController {
     private func configureImageConstraints() {
         NSLayoutConstraint.activate([
             logoImageView.centerXAnchor.constraint(equalTo: loginButton.centerXAnchor),
-            logoImageView.topAnchor.constraint(equalTo: emailNameTextField.topAnchor, constant: -300),
+            logoImageView.topAnchor.constraint(equalTo: emailTextField.topAnchor, constant: -300),
             logoImageView.widthAnchor.constraint(equalToConstant: 200),
             logoImageView.heightAnchor.constraint(equalToConstant: 200)
         ])

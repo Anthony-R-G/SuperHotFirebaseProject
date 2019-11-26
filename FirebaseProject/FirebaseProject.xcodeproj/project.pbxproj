@@ -19,7 +19,12 @@
 		976F30A723872E4C009C0880 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F30A623872E4C009C0880 /* ProfileViewController.swift */; };
 		976F30A92387311F009C0880 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 976F30A82387311F009C0880 /* GoogleService-Info.plist */; };
 		976F30AB238756D3009C0880 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F30AA238756D3009C0880 /* Helper.swift */; };
+		97AB5873238C2CEE0028FD56 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AB5872238C2CEE0028FD56 /* Post.swift */; };
+		97AB5875238C32D90028FD56 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AB5874238C32D90028FD56 /* CreateViewController.swift */; };
 		97BD473B23877938000F5213 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BD473A23877938000F5213 /* AppUser.swift */; };
+		97FA3DF8238C6D3000861AA3 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FA3DF7238C6D3000861AA3 /* FirebaseStorageManager.swift */; };
+		97FA3DFA238C78CB00861AA3 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FA3DF9238C78CB00861AA3 /* FirebaseAuthService.swift */; };
+		97FA3DFC238C79AD00861AA3 /* FirebaseFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FA3DFB238C79AD00861AA3 /* FirebaseFirestoreManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +44,12 @@
 		976F30A623872E4C009C0880 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		976F30A82387311F009C0880 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		976F30AA238756D3009C0880 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		97AB5872238C2CEE0028FD56 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		97AB5874238C32D90028FD56 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		97BD473A23877938000F5213 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
+		97FA3DF7238C6D3000861AA3 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
+		97FA3DF9238C78CB00861AA3 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
+		97FA3DFB238C79AD00861AA3 /* FirebaseFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +113,7 @@
 				976F30A223872BC4009C0880 /* MainTabBarController.swift */,
 				976F30A423872C0F009C0880 /* FeedViewController.swift */,
 				976F30A623872E4C009C0880 /* ProfileViewController.swift */,
+				97AB5874238C32D90028FD56 /* CreateViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -118,6 +129,10 @@
 			isa = PBXGroup;
 			children = (
 				97BD473A23877938000F5213 /* AppUser.swift */,
+				97AB5872238C2CEE0028FD56 /* Post.swift */,
+				97FA3DF7238C6D3000861AA3 /* FirebaseStorageManager.swift */,
+				97FA3DF9238C78CB00861AA3 /* FirebaseAuthService.swift */,
+				97FA3DFB238C79AD00861AA3 /* FirebaseFirestoreManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -256,15 +271,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97AB5875238C32D90028FD56 /* CreateViewController.swift in Sources */,
 				976F308D2386EB35009C0880 /* LoginViewController.swift in Sources */,
 				97BD473B23877938000F5213 /* AppUser.swift in Sources */,
 				976F30892386EB35009C0880 /* AppDelegate.swift in Sources */,
+				97FA3DF8238C6D3000861AA3 /* FirebaseStorageManager.swift in Sources */,
 				976F30A323872BC4009C0880 /* MainTabBarController.swift in Sources */,
+				97FA3DFA238C78CB00861AA3 /* FirebaseAuthService.swift in Sources */,
 				976F30A12387274C009C0880 /* SignUpViewController.swift in Sources */,
 				976F30A723872E4C009C0880 /* ProfileViewController.swift in Sources */,
 				976F30A523872C0F009C0880 /* FeedViewController.swift in Sources */,
 				976F308B2386EB35009C0880 /* SceneDelegate.swift in Sources */,
 				976F30AB238756D3009C0880 /* Helper.swift in Sources */,
+				97FA3DFC238C79AD00861AA3 /* FirebaseFirestoreManager.swift in Sources */,
+				97AB5873238C2CEE0028FD56 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

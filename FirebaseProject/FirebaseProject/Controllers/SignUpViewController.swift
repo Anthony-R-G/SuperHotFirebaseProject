@@ -63,7 +63,7 @@ class SignUpViewController: UIViewController {
         button.setTitle("Sign Up", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.showsTouchWhenHighlighted = true
-        button.addTarget(self, action: #selector(signUpButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(trySignUp), for: .touchUpInside)
         return button
     }()
     
@@ -89,6 +89,70 @@ class SignUpViewController: UIViewController {
         }
         return nil
     }
+    
+    private func handleCreateAccountResponse(with result: Result<User, Error>) {
+         DispatchQueue.main.async { [weak self] in
+             switch result {
+             case .success(let user):
+                
+                 FirestoreService.manager.createAppUser(user: AppUser(from: user)) { [weak self] newResult in
+                     self?.handleCreatedUserInFirestore(result: newResult)
+                 }
+             case .failure(let error):
+                self?.showAlert(message: error.localizedDescription)
+             }
+         }
+     }
+    
+    private func handleCreatedUserInFirestore(result: Result<(), Error>) {
+          switch result {
+          case .success:
+              guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                  let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
+                  else {
+                      //MARK: TODO - handle could not swap root view controller
+                      return
+              }
+              
+              //MARK: TODO - refactor this logic into scene delegate
+              UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromBottom, animations: {
+                  if FirebaseAuthService.manager.currentUser?.photoURL != nil {
+                      window.rootViewController = MainTabBarController()
+                }
+//                  } else {
+//                      window.rootViewController = {
+//                          let profileSetupVC = ProfileEditViewController()
+//                          profileSetupVC.settingFromLogin = true
+//                          return profileSetupVC
+//                      }()
+//                  }
+              }, completion: nil)
+          case .failure(let error):
+            self.showAlert(message: error.localizedDescription)
+          }
+      }
+    
+    @objc func trySignUp() {
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            showAlert(message: "Please fill out all fields.")
+            return
+        }
+        
+        guard email.isValidEmail else {
+            showAlert(message: "Please enter a valid email")
+            return
+        }
+        
+        guard password.isValidPassword else {
+            showAlert(message: "Please enter a valid password. Passwords must have at least 8 characters.")
+            return
+        }
+        
+        FirebaseAuthService.manager.createNewUser(email: email.lowercased(), password: password) { [weak self] (result) in
+            self?.handleCreateAccountResponse(with: result)
+        }
+    }
+    
     
     @objc private func signUpButtonPressed() {
         //Validate the fields
@@ -132,8 +196,7 @@ class SignUpViewController: UIViewController {
                 }
             }
           
-        }
-        
+       }
     }
     
     func transitionToHome() {
