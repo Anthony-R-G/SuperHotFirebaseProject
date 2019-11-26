@@ -28,26 +28,43 @@ class FeedViewController: UIViewController {
     
     var posts = [Post]() {
         didSet {
-            
+            collectionView.reloadData()
         }
     }
+    
+    private func loadPosts() {
+        FirestoreService.manager.getAllPost { (result) in
+            switch result {
+                
+            case .success(let postsData):
+                self.posts = postsData
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     @objc private func addButtonPressed () {
         let createVC = CreateViewController()
         createVC.navigationItem.title = "Upload Image"
         navigationController?.pushViewController(createVC, animated: true)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        loadPosts()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         self.navigationItem.rightBarButtonItem = addButton
+        setConstraints()
     }
 }
 
 extension FeedViewController {
     private func setConstraints() {
-        
+        setCollectionViewConstraints()
     }
     
     private func setCollectionViewConstraints() {
@@ -81,9 +98,19 @@ extension FeedViewController: UICollectionViewDataSource, UICollectionViewDelega
                 }
             }
         }
-        
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = DetailViewController()
+        let selectedPost = posts[indexPath.row]
+        detailVC.currentPost = selectedPost
+        
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 200, height: 200)
+    }
     
 }

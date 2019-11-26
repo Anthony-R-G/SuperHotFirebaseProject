@@ -26,6 +26,7 @@
 		97FA3DFA238C78CB00861AA3 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FA3DF9238C78CB00861AA3 /* FirebaseAuthService.swift */; };
 		97FA3DFC238C79AD00861AA3 /* FirebaseFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FA3DFB238C79AD00861AA3 /* FirebaseFirestoreManager.swift */; };
 		97FA3DFE238CEFCD00861AA3 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FA3DFD238CEFCD00861AA3 /* PostCollectionViewCell.swift */; };
+		97FA3E00238CF56A00861AA3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FA3DFF238CF56A00861AA3 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		97FA3DF9238C78CB00861AA3 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		97FA3DFB238C79AD00861AA3 /* FirebaseFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreManager.swift; sourceTree = "<group>"; };
 		97FA3DFD238CEFCD00861AA3 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
+		97FA3DFF238CF56A00861AA3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				976F30A423872C0F009C0880 /* FeedViewController.swift */,
 				976F30A623872E4C009C0880 /* ProfileViewController.swift */,
 				97AB5874238C32D90028FD56 /* CreateViewController.swift */,
+				97FA3DFF238CF56A00861AA3 /* DetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				97FA3DF8238C6D3000861AA3 /* FirebaseStorageManager.swift in Sources */,
 				97FA3DFE238CEFCD00861AA3 /* PostCollectionViewCell.swift in Sources */,
 				976F30A323872BC4009C0880 /* MainTabBarController.swift in Sources */,
+				97FA3E00238CF56A00861AA3 /* DetailViewController.swift in Sources */,
 				97FA3DFA238C78CB00861AA3 /* FirebaseAuthService.swift in Sources */,
 				976F30A12387274C009C0880 /* SignUpViewController.swift in Sources */,
 				976F30A723872E4C009C0880 /* ProfileViewController.swift in Sources */,

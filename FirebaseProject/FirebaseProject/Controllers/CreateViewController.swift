@@ -62,20 +62,18 @@ class CreateViewController: UIViewController {
         }
     }
     
-     @objc private func uploadButtonPressed() {
-           guard let user = FirebaseAuthService.manager.currentUser else {return}
-           guard let photoUrl = imageURL else {return}
+    @objc private func uploadButtonPressed() {
+        guard let user = FirebaseAuthService.manager.currentUser else {return}
+        guard let photoUrl = imageURL else {return}
         FirestoreService.manager.createPost(post: Post(creatorID: user.uid, dateCreated: Date(), imageUrl: photoUrl)) { (result) in
-               switch result {
-               case .failure(let error):
+            switch result {
+            case .failure(let error):
                 self.showAlert(message: "\(error)")
-               case .success:
-                   self.showAlert(message: "Posted")
-               }
-           }
-       }
-    
-    
+            case .success:
+                self.showAlert(message: "Posted")
+            }
+        }
+    }
     
     
     private func showAlert(message: String) {
