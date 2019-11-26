@@ -17,7 +17,6 @@ class SignUpViewController: UIViewController {
         textField.placeholder = "First Name"
         textField.borderStyle = .roundedRect
         textField.backgroundColor = #colorLiteral(red: 0.9101040959, green: 0.9046940207, blue: 0.9142627716, alpha: 1)
-        textField.delegate = self
         return textField
     }()
     
@@ -26,7 +25,6 @@ class SignUpViewController: UIViewController {
         textField.placeholder = "Last Name"
         textField.borderStyle = .roundedRect
         textField.backgroundColor = #colorLiteral(red: 0.9101040959, green: 0.9046940207, blue: 0.9142627716, alpha: 1)
-        textField.delegate = self
         return textField
     }()
     
@@ -36,7 +34,7 @@ class SignUpViewController: UIViewController {
         textField.placeholder = "Email"
         textField.borderStyle = .roundedRect
         textField.backgroundColor = #colorLiteral(red: 0.9101040959, green: 0.9046940207, blue: 0.9142627716, alpha: 1)
-        textField.delegate = self
+       
         return textField
     }()
     
@@ -217,7 +215,7 @@ extension SignUpViewController {
         [nameStackView, emailTextField, passwordTextField, signUpButton].forEach({view.addSubview($0)})
         [nameStackView, emailTextField, passwordTextField, signUpButton].forEach({$0.translatesAutoresizingMaskIntoConstraints = false})
         
-        setNameStackConstraints()
+//        setNameStackConstraints()
         setEmailTextFieldConstraints()
         setPasswordTextFieldConstraints()
         setSignUpButtonConstraints()

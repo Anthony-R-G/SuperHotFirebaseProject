@@ -25,6 +25,7 @@
 		97FA3DF8238C6D3000861AA3 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FA3DF7238C6D3000861AA3 /* FirebaseStorageManager.swift */; };
 		97FA3DFA238C78CB00861AA3 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FA3DF9238C78CB00861AA3 /* FirebaseAuthService.swift */; };
 		97FA3DFC238C79AD00861AA3 /* FirebaseFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FA3DFB238C79AD00861AA3 /* FirebaseFirestoreManager.swift */; };
+		97FA3DFE238CEFCD00861AA3 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FA3DFD238CEFCD00861AA3 /* PostCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		97FA3DF7238C6D3000861AA3 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		97FA3DF9238C78CB00861AA3 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		97FA3DFB238C79AD00861AA3 /* FirebaseFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreManager.swift; sourceTree = "<group>"; };
+		97FA3DFD238CEFCD00861AA3 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		976F309D23872568009C0880 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				97FA3DFD238CEFCD00861AA3 /* PostCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				97BD473B23877938000F5213 /* AppUser.swift in Sources */,
 				976F30892386EB35009C0880 /* AppDelegate.swift in Sources */,
 				97FA3DF8238C6D3000861AA3 /* FirebaseStorageManager.swift in Sources */,
+				97FA3DFE238CEFCD00861AA3 /* PostCollectionViewCell.swift in Sources */,
 				976F30A323872BC4009C0880 /* MainTabBarController.swift in Sources */,
 				97FA3DFA238C78CB00861AA3 /* FirebaseAuthService.swift in Sources */,
 				976F30A12387274C009C0880 /* SignUpViewController.swift in Sources */,
