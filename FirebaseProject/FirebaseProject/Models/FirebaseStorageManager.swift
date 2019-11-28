@@ -11,31 +11,30 @@ import FirebaseStorage
 
 class FirebaseStorageService {
     
-    enum TypeOfImage {
+    enum imageType {
         case profile
-        case upload
+        case uploaded
     }
     
     static var profileManager = FirebaseStorageService(type: .profile)
-    static var uploadManager = FirebaseStorageService(type: .upload)
+    static var uploadManager = FirebaseStorageService(type: .uploaded)
     
     private let storage: Storage!
     private let storageReference: StorageReference
     private let imagesFolderReference: StorageReference
     
-    init(type: TypeOfImage) {
+    init(type: imageType) {
         storage = Storage.storage()
         storageReference = storage.reference()
         switch type {
         case .profile:
             imagesFolderReference = storageReference.child("profileImages")
-        case .upload:
+        case .uploaded:
             imagesFolderReference = storageReference.child("uploadedImages")
         }
         
     }
-    
-    
+     
     func storeImage(image: Data,  completion: @escaping (Result<String,Error>) -> ()) {
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
@@ -63,6 +62,7 @@ class FirebaseStorageService {
             }
         }
     }
+    
     func getUserImage(photoUrl: URL, completion: @escaping (Result<UIImage,Error>) -> ()) {
         imagesFolderReference.storage.reference(forURL: photoUrl.absoluteString).getData(maxSize: 2000000) { (data, error) in
             if let error = error {

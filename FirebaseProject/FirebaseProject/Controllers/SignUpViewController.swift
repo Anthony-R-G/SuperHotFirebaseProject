@@ -12,13 +12,15 @@ import Firebase
 
 class SignUpViewController: UIViewController {
     
-    lazy var firstNameTextField: UITextField = {
+    var firstNameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "First Name"
         textField.borderStyle = .roundedRect
         textField.backgroundColor = #colorLiteral(red: 0.9101040959, green: 0.9046940207, blue: 0.9142627716, alpha: 1)
         return textField
     }()
+    
+
     
     lazy var lastNameTextField: UITextField = {
         let textField = UITextField()

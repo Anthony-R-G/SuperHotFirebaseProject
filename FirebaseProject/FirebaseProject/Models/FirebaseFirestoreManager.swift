@@ -17,6 +17,8 @@ enum FireStoreCollections: String {
 class FirestoreService {
     static let manager = FirestoreService()
     private let db = Firestore.firestore()
+    
+    
     //MARK: AppUsers
     func createAppUser(user: AppUser, completion: @escaping (Result<(), Error>) -> ()) {
         var fields = user.fieldsDict
@@ -29,6 +31,8 @@ class FirestoreService {
             completion(.success(()))
         }
     }
+    
+    
     func updateCurrentUser(userName: String? = nil, photoURL: URL? = nil, completion: @escaping (Result<(), Error>) -> ()){
         guard let userId = FirebaseAuthService.manager.currentUser?.uid else {
             //MARK: TODO - handle can't get current user
@@ -53,17 +57,19 @@ class FirestoreService {
             
         }
     }
+    
     func createPost(post: Post, completion: @escaping (Result<(), Error>) -> ()) {
-         var fields = post.fieldsDict
-         fields["dateCreated"] = Date()
-         db.collection(FireStoreCollections.posts.rawValue).addDocument(data: fields) { (error) in
-             if let error = error {
-                 completion(.failure(error))
-             } else {
-                 completion(.success(()))
-             }
-         }
-     }
+        var fields = post.fieldsDict
+        fields["dateCreated"] = Date()
+        db.collection(FireStoreCollections.posts.rawValue).addDocument(data: fields) { (error) in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(()))
+            }
+        }
+    }
+    
     func getAllPost(completion: @escaping (Result<[Post], Error>) -> ()){
         db.collection(FireStoreCollections.posts.rawValue).getDocuments {(snapshot, error) in
             if let error = error{
@@ -75,9 +81,10 @@ class FirestoreService {
                     return post
                 })
                 completion(.success(posts ?? []))
-                }
+            }
+        }
     }
-    }
+    
     func getUserPosts(for UserID: String, completion: @escaping (Result<[Post],Error>) ->()) {
         db.collection(FireStoreCollections.posts.rawValue).whereField("creatorID", isEqualTo: UserID).getDocuments { (snapshot, error) in
             if let error = error{
