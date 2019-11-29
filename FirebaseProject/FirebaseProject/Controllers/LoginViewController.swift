@@ -51,10 +51,14 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    lazy var logoImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "Apple")
-        return imageView
+    lazy var Firestagram: UILabel = {
+        let label = UILabel()
+        label.text = "Firestagram"
+        label.font = UIFont.boldSystemFont(ofSize: 60)
+        
+        label.textColor = .black
+        label.textAlignment = .center
+        return label
     }()
     
     //MARK: -- Methods
@@ -169,11 +173,11 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
     
     private func setConstraints() {
-        [emailTextField, passwordTextField, loginButton, signUpButton, logoImageView].forEach({view.addSubview($0)})
+        [emailTextField, passwordTextField, loginButton, signUpButton, Firestagram].forEach({view.addSubview($0)})
         
-        [emailTextField, passwordTextField, loginButton, signUpButton, logoImageView].forEach({$0.translatesAutoresizingMaskIntoConstraints = false})
+        [emailTextField, passwordTextField, loginButton, signUpButton, Firestagram].forEach({$0.translatesAutoresizingMaskIntoConstraints = false})
         
-        configureImageConstraints()
+        configureTitleLabelConstraints()
         configureTextFieldConstraints()
         configureSignUpButtonConstraints()
         configureLoginButtonConstraints()
@@ -212,12 +216,12 @@ extension LoginViewController {
         ])
     }
     
-    private func configureImageConstraints() {
+    private func configureTitleLabelConstraints() {
         NSLayoutConstraint.activate([
-            logoImageView.centerXAnchor.constraint(equalTo: loginButton.centerXAnchor),
-            logoImageView.topAnchor.constraint(equalTo: emailTextField.topAnchor, constant: -300),
-            logoImageView.widthAnchor.constraint(equalToConstant: 200),
-            logoImageView.heightAnchor.constraint(equalToConstant: 200)
+            Firestagram.centerXAnchor.constraint(equalTo: loginButton.centerXAnchor),
+            Firestagram.topAnchor.constraint(equalTo: emailTextField.topAnchor, constant: -300),
+            Firestagram.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
+            Firestagram.heightAnchor.constraint(equalToConstant: 200)
         ])
     }
 }

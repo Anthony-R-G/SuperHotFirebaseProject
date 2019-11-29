@@ -22,7 +22,7 @@ class FeedViewController: UIViewController {
         cv.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: "postCell")
         cv.dataSource = self
         cv.delegate = self
-        cv.backgroundColor = .green
+        cv.backgroundColor = .white
         return cv
     }()
     
