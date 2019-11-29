@@ -262,9 +262,3 @@ extension SignUpViewController {
     }
     
 }
-
-
-
-extension SignUpViewController: UITextFieldDelegate {
-    
-}

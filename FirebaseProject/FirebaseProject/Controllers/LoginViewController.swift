@@ -17,7 +17,6 @@ class LoginViewController: UIViewController {
         textField.placeholder = "Enter Email..."
         textField.borderStyle = .roundedRect
         textField.backgroundColor = #colorLiteral(red: 0.9101040959, green: 0.9046940207, blue: 0.9142627716, alpha: 1)
-        textField.delegate = self
         return textField
     }()
     
@@ -27,7 +26,6 @@ class LoginViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.backgroundColor = #colorLiteral(red: 0.9101040959, green: 0.9046940207, blue: 0.9142627716, alpha: 1)
         textField.isSecureTextEntry = true
-        textField.delegate = self
         return textField
     }()
     
@@ -35,7 +33,7 @@ class LoginViewController: UIViewController {
         let button = UIButton()
         button.setTitle("LOGIN", for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
-        button.layer.cornerRadius = 10
+        button.layer.cornerRadius = 25
         button.showsTouchWhenHighlighted = true
         button.addTarget(self, action: #selector(tryLogin), for: .touchUpInside)
         return button
@@ -55,8 +53,7 @@ class LoginViewController: UIViewController {
         let label = UILabel()
         label.text = "Firestagram"
         label.font = UIFont.boldSystemFont(ofSize: 60)
-        
-        label.textColor = .black
+        label.textColor = .purple
         label.textAlignment = .center
         return label
     }()
@@ -189,7 +186,7 @@ extension LoginViewController {
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -170),
             loginButton.widthAnchor.constraint(equalToConstant: 350),
-            loginButton.heightAnchor.constraint(equalToConstant: 60)
+            loginButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
@@ -198,7 +195,7 @@ extension LoginViewController {
             signUpButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             signUpButton.bottomAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 70),
             signUpButton.widthAnchor.constraint(equalToConstant: 350),
-            signUpButton.heightAnchor.constraint(equalToConstant: 60)
+            signUpButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
@@ -224,9 +221,4 @@ extension LoginViewController {
             Firestagram.heightAnchor.constraint(equalToConstant: 200)
         ])
     }
-}
-
-//MARK: --TextField Delegate
-extension LoginViewController: UITextFieldDelegate {
-    
 }
