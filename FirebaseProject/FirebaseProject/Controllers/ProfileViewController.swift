@@ -31,7 +31,10 @@ class ProfileViewController: UIViewController {
           
           guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window else {return}
           
-          window.rootViewController = LoginViewController()
+        UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromTop, animations: {
+            window.rootViewController = LoginViewController()
+        }, completion: nil)
+          
       }
     
     private func setConstraints() {

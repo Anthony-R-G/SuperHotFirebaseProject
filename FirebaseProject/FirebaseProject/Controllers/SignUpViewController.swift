@@ -46,7 +46,7 @@ class SignUpViewController: UIViewController {
         textField.isSecureTextEntry = true
         textField.borderStyle = .roundedRect
         textField.backgroundColor = #colorLiteral(red: 0.9101040959, green: 0.9046940207, blue: 0.9142627716, alpha: 1)
-        textField.delegate = self
+        
         return textField
     }()
     
